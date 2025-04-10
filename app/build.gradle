@@ -1,0 +1,74 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    namespace 'com.pairadant'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.pairadant"
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures {
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion compose_version
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    // Core Android
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.2'
+    implementation 'androidx.activity:activity-compose:1.7.2'
+
+    // Compose
+    implementation "androidx.compose.ui:ui:$compose_version"
+    implementation "androidx.compose.material3:material3:1.1.1"
+    implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
+    implementation "androidx.navigation:navigation-compose:2.7.2"
+
+    // Room
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+
+    // Hilt
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
+
+    // DataStore
+    implementation "androidx.datastore:datastore-preferences:1.0.0"
+
+    // Biometric
+    implementation "androidx.biometric:biometric:1.2.0-alpha05"
+
+    // Apache POI for DOCX
+    implementation 'org.apache.poi:poi:5.2.3'
+    implementation 'org.apache.poi:poi-ooxml:5.2.3'
+
+    // Gson for JSON export/import
+    implementation 'com.google.code.gson:gson:2.10.1'
+}

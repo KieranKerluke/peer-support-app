@@ -1,0 +1,2 @@
+@HiltAndroidApp
+class PairAidantApplication : Application()
